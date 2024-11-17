@@ -24,4 +24,5 @@ model Book {
   availability Boolean @default(true)
   ownerId     Int
   owner       User     @relation(fields: [ownerId], references: [id])
+  description String
 }

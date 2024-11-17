@@ -19,16 +19,15 @@ export const loginUser: RequestHandler = async (req: Request, res: Response): Pr
 };
 
 export const registerUser: RequestHandler = async (req: Request, res: Response): Promise<void> => {
-  // const { email, password, name } = req.body;
+  const { email, password, name } = req.body;
   try {
-    // const hashedPassword = await bcrypt.hash(password, 10);
-    // const user = await prisma.user.create({
-    //   data: { email, password: hashedPassword, name },
-    // });
-    res.status(201).json({  });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = await prisma.user.create({
+      data: { email, password: hashedPassword, name },
+    });
+    res.status(201).json({ user });
   } catch (error) {
-    const errorMessage = (error as Error).message;
-    res.status(400).json({ error: 'User registration qwe', message: errorMessage });
+    res.status(400).json({ error: 'User registration failed' });
   }
 };
 

@@ -51,3 +51,26 @@ The Book Exchange Platform Backend powers the application with robust and scalab
     ```bash
     npm start
     ```
+
+5. Set up PostgreSQL:
+    - Install PostgreSQL from the [official website](https://www.postgresql.org/download/).
+    - Create a new database for the project:
+        ```bash
+        createdb book_exchange_db
+        ```
+
+6. Configure the database connection:
+    - Create a `.env` file in the root directory and add the following:
+        ```env
+        DATABASE_URL="postgresql://<username>:<password>@localhost:5432/book_exchange_db"
+        ```
+
+7. Run Prisma migrations to set up the database schema:
+    ```bash
+    npx prisma migrate deploy
+    ```
+
+8. Generate Prisma client:
+    ```bash
+    npx prisma generate
+    ```
